@@ -7,10 +7,16 @@ namespace NetCoreApi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+     
         public ActionResult testStatus()
         {
-          
 
+            return ViewComponent();
+        }
+
+        private ActionResult ViewComponent()
+        {
+            throw new NotImplementedException();
         }
     }
 }
