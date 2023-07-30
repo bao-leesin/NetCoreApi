@@ -2,5 +2,6 @@
 {
     public class TesterModel
     {
+        public int Id { get; set; }
     }
 }
