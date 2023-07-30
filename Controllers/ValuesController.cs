@@ -9,7 +9,8 @@ namespace NetCoreApi.Controllers
     public class ValuesController : ControllerBase
     {
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [HttpGet]
+        [HttpGet(Name = "GetTest")]
+
         public ActionResult<TesterModel> GetTester() => Ok(new TesterModel());
 
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -17,7 +18,13 @@ namespace NetCoreApi.Controllers
         [HttpPost]
         public ActionResult<TesterModel> CreateTester([FromBody] TesterModel model)
         {
-            return CreatedAtRoute("GetTester", model);
+            //bool caseHasError = true;
+            //if (caseHasError)
+            //{
+            //    ModelState.AddModelError("Custom Error", "Error message");
+            //    return BadRequest(ModelState);
+            //}
+            return CreatedAtRoute("GetTest",model);
         }
 
     }
