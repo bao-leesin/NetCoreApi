@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using NetCoreApi.Models;
 
 namespace NetCoreApi.Controllers
@@ -26,6 +27,14 @@ namespace NetCoreApi.Controllers
             //}
             return CreatedAtRoute("GetTest",model);
         }
-
+        [HttpPatch]
+        public IActionResult TestPatch(int id, JsonPatchDocument<TesterModel> patch)
+        {
+            TesterModel X = new TesterModel { Id = id};
+            patch.ApplyTo(X, (Microsoft.AspNetCore.JsonPatch.Adapters.IObjectAdapter)ModelState);
+            var smt = ModelState.IsValid;
+            return Ok(smt);
+        }
+       
     }
 }
