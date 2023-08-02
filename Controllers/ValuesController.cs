@@ -9,10 +9,21 @@ namespace NetCoreApi.Controllers
    
     public class ValuesController : ControllerBase
     {
+
+        private readonly ILogger<TesterModel> _logger;
+        public ValuesController(ILogger<TesterModel> logger)
+        {
+            _logger = logger;
+        }
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet(Name = "GetTest")]
-
-        public ActionResult<TesterModel> GetTester() => Ok(new TesterModel());
+        public ActionResult<TesterModel> GetTester()
+        {
+            _logger.LogInformation("TestLog");
+            TesterModel value = new TesterModel();
+            return Ok(value);
+        }
 
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
