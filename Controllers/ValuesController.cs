@@ -10,25 +10,25 @@ namespace NetCoreApi.Controllers
     public class ValuesController : ControllerBase
     {
 
-        private readonly ILogger<TesterModel> _logger;
-        public ValuesController(ILogger<TesterModel> logger)
+        private readonly ILogger<AccountModel> _logger;
+        public ValuesController(ILogger<AccountModel> logger)
         {
             _logger = logger;
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet(Name = "GetTest")]
-        public ActionResult<TesterModel> GetTester()
+        public ActionResult<AccountModel> GetTester()
         {
             _logger.LogInformation("TestLog");
-            TesterModel value = new TesterModel();
+            AccountModel value = new AccountModel();
             return Ok(value);
         }
 
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
-        public ActionResult<TesterModel> CreateTester([FromBody] TesterModel model)
+        public ActionResult<AccountModel> CreateTester([FromBody] AccountModel model)
         {
             //bool caseHasError = true;
             //if (caseHasError)
@@ -39,9 +39,9 @@ namespace NetCoreApi.Controllers
             return CreatedAtRoute("GetTest",model);
         }
         [HttpPatch]
-        public IActionResult TestPatch(int id, JsonPatchDocument<TesterModel> patch)
+        public IActionResult TestPatch(int id, JsonPatchDocument<AccountModel> patch)
         {
-            TesterModel X = new TesterModel { Id = id};
+            AccountModel X = new AccountModel { Id = id};
             patch.ApplyTo(X, (Microsoft.AspNetCore.JsonPatch.Adapters.IObjectAdapter)ModelState);
             var smt = ModelState.IsValid;
             return Ok(smt);
