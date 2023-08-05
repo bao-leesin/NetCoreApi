@@ -5,7 +5,7 @@ namespace NetCoreApi.Bll
 {
     public class AccountBll
     {
-        private static DbContextCore DbContext;
+        private static DbContextCore DbContext = new DbContextCore(DbContextCor);
         public AccountBll(DbContextCore dbContextCore) {
             DbContext = dbContextCore;
         }
