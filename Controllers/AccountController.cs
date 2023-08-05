@@ -20,9 +20,9 @@ namespace NetCoreApi.Controllers
 
         // GET api/<AccountController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public AccountModel Get(int id)
         {
-            return "value";
+            return AccountBll.Get(id);
         }
 
         // POST api/<AccountController>

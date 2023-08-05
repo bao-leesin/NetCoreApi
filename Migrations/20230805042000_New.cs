@@ -5,7 +5,7 @@
 namespace NetCoreApi.Migrations
 {
     /// <inheritdoc />
-    public partial class AddAccountTable : Migration
+    public partial class New : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
