@@ -1,7 +1,6 @@
-using WebAPI.Middleware;
 using Serilog;
 using Service.DependencyInjection;
-using WebAPI.DependencyInjection;
+using WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
-DIConfig.ConfigureServices(builder.Services, builder.Configuration);
+WebAPI.DependencyInjection.DIConfig.ConfigureServices(builder.Services, builder.Configuration);
+Data.DependencyInjection.DIConfig.ConfigureServices(builder.Services, builder.Configuration);
+Service.DependencyInjection.ServiceCollectionExtension.AddCustomServices(builder.Services);
+Data.DependencyInjection.ServiceCollectionExtension.AddCustomServices(builder.Services);
 builder.Services.AddCustomServices();
 var app = builder.Build();
 
